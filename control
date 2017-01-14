@@ -1,0 +1,9 @@
+Package: io.c0ldra1n.photicon
+Name: Photicon
+Depends: mobilesubstrate
+Version: 0.0.7
+Architecture: iphoneos-arm
+Description: A dynamic icon for your photos app
+Maintainer: c0ldra1n
+Author: c0ldra1n
+Section: Tweaks

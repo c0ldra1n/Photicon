@@ -1,0 +1,275 @@
+
+#import "Tweak.h"
+
+#import <substrate.h>
+
+#import <PhotoLibraryServices/Processed/PLPhotoLibrary.h>
+#import <PhotoLibraryServices/Processed/PLManagedAlbum.h>
+#import <PhotoLibraryServices/Processed/PLManagedAsset.h>
+
+#import "xctheos.h"
+
+#define PHPreferences [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/io.c0ldra1n.photicon-prefs.plist"]
+
+#define PHEnabled [(_dictionaryContainsKey(PHPreferences, @"PHEnabled") ? PHPreferences[@"PHEnabled"] : @(YES)) boolValue]
+
+#define PHImageEffect (PHPreferences[@"PHImageEffect"] ?: @"none")
+
+#define PHBlurAmount [(PHPreferences[@"PHBlurAmount"] ?: @(70)) floatValue]
+
+#define ALBUM_PHPreferences ([[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/io.c0ldra1n.photicon-prefs-extras.plist"]?:[[NSDictionary alloc] init])
+
+#define PHAlbumName (ALBUM_PHPreferences[@"PHAlbumName"] ?: @"Camera Roll")
+
+static BOOL _dictionaryContainsKey(NSDictionary *dict, NSString *key){
+    for (NSString *_key in dict.allKeys) {
+        if ([_key isEqualToString:key]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+static UIImage* getRecentImage(){
+    
+    PLPhotoLibrary *library = [PLPhotoLibrary sharedPhotoLibrary];
+    
+    PLManagedAlbum *album;
+    
+    NSLog(@"[Photicon]: Searching for albums...");
+    
+    for (PLManagedAlbum *album_filtering in [library albums]) {
+        if ([album_filtering.localizedTitle isEqualToString:PHAlbumName]) {
+            album = album_filtering;
+            break;
+        }
+    }
+    
+    NSLog(@"[Photicon]: Album search result: %@", album);
+    
+    if (!album) {
+        album = [[library albums] firstObject];
+    }
+    
+    NSOrderedSet *assets = [album assets];
+    
+    PLManagedAsset *photo;
+    
+    for (int i = 0; i < assets.count; i++) {
+        
+        PLManagedAsset *asset_photo = [assets objectAtIndex:((assets.count-1) - i)];
+        
+        if ([asset_photo isPhoto] && ![asset_photo hidden]) {
+            photo = asset_photo;
+            break;
+        }
+    }
+    
+    if (!photo) {
+        album = [[library albums] firstObject];
+        assets = [album assets];
+        for (int i = 0; i < assets.count; i++) {
+            
+            PLManagedAsset *asset_photo = [assets objectAtIndex:((assets.count-1) - i)];
+            
+            if ([asset_photo isPhoto] && ![asset_photo hidden]) {
+                photo = asset_photo;
+                break;
+            }
+        }
+    }
+    
+    NSLog(@"[Photicon]: Verify that image is here: %@", [photo mainFileURL]);
+    
+    UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[photo mainFileURL]]];
+    
+    return image;
+    
+}
+
+static UIImage * maskImage(UIImage *image, UIImage *maskImage){
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGImageRef maskImageRef = [maskImage CGImage];
+    
+    // create a bitmap graphics context the size of the image
+    CGContextRef mainViewContentContext = CGBitmapContextCreate (NULL, maskImage.size.width, maskImage.size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
+    CGColorSpaceRelease(colorSpace);
+    
+    if (mainViewContentContext==NULL)
+        return NULL;
+    
+    CGFloat ratio = 0;
+    
+    ratio = maskImage.size.width/ image.size.width;
+    
+    if(ratio * image.size.height < maskImage.size.height) {
+        ratio = maskImage.size.height/ image.size.height;
+    }
+    
+    CGRect rect1  = {{0, 0}, {maskImage.size.width, maskImage.size.height}};
+    CGRect rect2  = {{-((image.size.width*ratio)-maskImage.size.width)/2 , -((image.size.height*ratio)-maskImage.size.height)/2}, {image.size.width*ratio, image.size.height*ratio}};
+    
+    
+    CGContextClipToMask(mainViewContentContext, rect1, maskImageRef);
+    CGContextDrawImage(mainViewContentContext, rect2, image.CGImage);
+    
+    
+    // Create CGImageRef of the main view bitmap content, and then
+    // release that bitmap context
+    CGImageRef newImage = CGBitmapContextCreateImage(mainViewContentContext);
+    CGContextRelease(mainViewContentContext);
+    
+    UIImage *theImage = [UIImage imageWithCGImage:newImage];
+    
+    CGImageRelease(newImage);
+    
+    // return the image
+    return theImage;
+}
+
+static UIImage * resizeImage(UIImage *image, CGSize newSize){
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+static UIImage * blurImage(UIImage *image){
+    
+    //  Create our blurred image
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [CIImage imageWithCGImage:image.CGImage];
+    
+    //  Setting up Gaussian Blur
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    
+    [filter setValue:inputImage forKey:kCIInputImageKey];
+    
+    [filter setValue:[NSNumber numberWithFloat:PHBlurAmount] forKey:@"inputRadius"];
+    
+    CIImage *result = [filter valueForKey:kCIOutputImageKey];
+    
+    /*  CIGaussianBlur has a tendency to shrink the image a little, this ensures it matches
+     *  up exactly to the bounds of our original image */
+    CGImageRef cgImage = [context createCGImage:result fromRect:[inputImage extent]];
+    
+    UIImage *retVal = [UIImage imageWithCGImage:cgImage];
+    return retVal;
+    
+}
+
+static UIImage * tintImage(UIImage *image, UIColor *color){
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect area = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    CGContextScaleCTM(context, 1, -1);
+    CGContextTranslateCTM(context, 0, -area.size.height);
+    
+    CGContextSaveGState(context);
+    CGContextClipToMask(context, area, image.CGImage);
+    
+    [color set];
+    CGContextFillRect(context, area);
+    
+    CGContextRestoreGState(context);
+    
+    CGContextSetBlendMode(context, kCGBlendModeMultiply);
+    
+    CGContextDrawImage(context, area, image.CGImage);
+    
+    UIImage *colorizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return colorizedImage;
+}
+
+static void reloadPhotosIcon(){
+    
+    NSLog(@"[Photicon]: Will reload icon...");
+    
+    SBIcon *icon = [[[GET_CLASS(SBIconController) sharedInstance] model] expectedIconForDisplayIdentifier:@"com.apple.mobileslideshow"];
+    
+    SBIconView *iconView = [[[GET_CLASS(SBIconController) sharedInstance] homescreenIconViewMap] mappedIconViewForIcon:icon];
+    
+    SBIconImageView *imageView = MSHookIvar<SBIconImageView *>(iconView, "_iconImageView");
+    
+    [imageView updateImageAnimated:true];
+}
+
+GROUP(defaults)
+
+HOOK(SBLockScreenManager)
+
+-(void)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2{
+    ORIG();
+    if(PHEnabled){
+        reloadPhotosIcon();
+    }
+}
+
+
+END()
+
+
+HOOK(SBUIController)
+
+-(BOOL)clickedMenuButton{
+    if(PHEnabled){
+        reloadPhotosIcon();
+    }
+    return ORIG();
+}
+
+END()
+
+HOOK(SBIconImageView)
+
+-(id)contentsImage{
+    
+    if(PHEnabled){
+        if([[self.icon applicationBundleID] isEqualToString:@"com.apple.mobileslideshow"]){
+            
+            UIImage *overlayMask = [self _currentOverlayImage];
+            
+            UIImage *recentImage = getRecentImage();
+            
+            UIImage *finalImage;
+            
+            if([PHImageEffect isEqualToString:@"none"]){
+                
+                finalImage = maskImage((recentImage),resizeImage(overlayMask, CGSizeMake(256, 256)));
+                
+            }else if([PHImageEffect isEqualToString:@"lightblur"]){
+                
+                finalImage = maskImage(blurImage(recentImage),resizeImage(overlayMask, CGSizeMake(256, 256)));
+                
+            }else if([PHImageEffect isEqualToString:@"darkblur"]){
+                
+                finalImage = tintImage(maskImage(blurImage(recentImage),resizeImage(overlayMask, CGSizeMake(256, 256))), [[UIColor blackColor] colorWithAlphaComponent:0.3]);
+            }
+            
+            return finalImage;
+            
+        }else{
+            return ORIG();
+        }
+    }else{
+        return ORIG();
+    }
+}
+
+END()
+
+END_GROUP()
+
+
+CTOR(){
+    
+    INIT(defaults);
+}

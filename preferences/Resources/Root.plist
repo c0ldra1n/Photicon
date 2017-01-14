@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cellClass</key>
+			<string>CRPSTableViewCell</string>
+			<key>height</key>
+			<integer>200</integer>
+			<key>image</key>
+			<string>/Library/PreferenceBundles/Photicon.bundle/header-overlay.png</string>
+			<key>background-image</key>
+			<string>/Library/PreferenceBundles/Photicon.bundle/header-background.png</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Photicon</string>
+			<key>footerText</key>
+			<string>Respring is recommended after enabling/disabling Photicon. Photos labled hidden won&apos;t be used.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>io.c0ldra1n.photicon-prefs</string>
+			<key>key</key>
+			<string>PHEnabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>action</key>
+			<string>respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Effects</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>key</key>
+			<string>PHImageEffect</string>
+			<key>default</key>
+			<string>none</string>
+			<key>defaults</key>
+			<string>io.c0ldra1n.photicon-prefs</string>
+			<key>label</key>
+			<string>Image Blur Effect</string>
+			<key>staticTextMessage</key>
+			<string>Image Blur Effect</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>shortTitles</key>
+			<array>
+				<string>No Effect</string>
+				<string>Light Blur</string>
+				<string>Dark Blur</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>none</string>
+				<string>lightblur</string>
+				<string>darkblur</string>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>No Effect</string>
+				<string>Light Blur</string>
+				<string>Dark Blur</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Blur Amount</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<integer>70</integer>
+			<key>defaults</key>
+			<string>io.c0ldra1n.photicon-prefs</string>
+			<key>key</key>
+			<string>PHBlurAmount</string>
+			<key>min</key>
+			<integer>0</integer>
+			<key>max</key>
+			<integer>200</integer>
+			<key>showValue</key>
+			<true/>
+			<key>isContinuous</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Album</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>Select Album</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>selectAlbum</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Credits</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>@0xc0ldra1n (c0ldra1n)</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>twitter</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Photicon</string>
+</dict>
+</plist>

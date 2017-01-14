@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53189A311E28ECB00078CAF8 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 53189A2D1E28ECB00078CAF8 /* Makefile */; };
+		53189A321E28ECB50078CAF8 /* Tweak.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 53189A2F1E28ECB00078CAF8 /* Tweak.xmi */; };
+		53189A391E291E580078CAF8 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 53189A351E291E580078CAF8 /* Makefile */; };
+		53189A3A1E291E580078CAF8 /* PHPRootListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53189A371E291E580078CAF8 /* PHPRootListController.m */; };
+		53189A3D1E291F280078CAF8 /* CRPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53189A3C1E291F280078CAF8 /* CRPSTableViewCell.m */; };
+		53189A401E292C700078CAF8 /* PHPAlbumPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53189A3F1E292C700078CAF8 /* PHPAlbumPickerViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		53189A141E28BB820078CAF8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		53189A161E28BB820078CAF8 /* libPhoticon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhoticon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		53189A2C1E28ECB00078CAF8 /* control */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
+		53189A2D1E28ECB00078CAF8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		53189A2E1E28ECB00078CAF8 /* Tweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweak.h; sourceTree = "<group>"; };
+		53189A2F1E28ECB00078CAF8 /* Tweak.xmi */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Tweak.xmi; sourceTree = "<group>"; };
+		53189A301E28ECB00078CAF8 /* xctheos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xctheos.h; sourceTree = "<group>"; };
+		53189A341E291E580078CAF8 /* entry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = entry.plist; path = preferences/entry.plist; sourceTree = "<group>"; };
+		53189A351E291E580078CAF8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = preferences/Makefile; sourceTree = "<group>"; };
+		53189A361E291E580078CAF8 /* PHPRootListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHPRootListController.h; path = preferences/PHPRootListController.h; sourceTree = "<group>"; };
+		53189A371E291E580078CAF8 /* PHPRootListController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = PHPRootListController.m; path = preferences/PHPRootListController.m; sourceTree = "<group>"; };
+		53189A381E291E580078CAF8 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = preferences/Resources; sourceTree = "<group>"; };
+		53189A3B1E291F280078CAF8 /* CRPSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRPSTableViewCell.h; path = preferences/CRPSTableViewCell.h; sourceTree = "<group>"; };
+		53189A3C1E291F280078CAF8 /* CRPSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRPSTableViewCell.m; path = preferences/CRPSTableViewCell.m; sourceTree = "<group>"; };
+		53189A3E1E292C700078CAF8 /* PHPAlbumPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHPAlbumPickerViewController.h; path = preferences/PHPAlbumPickerViewController.h; sourceTree = "<group>"; };
+		53189A3F1E292C700078CAF8 /* PHPAlbumPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHPAlbumPickerViewController.m; path = preferences/PHPAlbumPickerViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53189A131E28BB820078CAF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53189A0D1E28BB810078CAF8 = {
+			isa = PBXGroup;
+			children = (
+				53189A2C1E28ECB00078CAF8 /* control */,
+				53189A2D1E28ECB00078CAF8 /* Makefile */,
+				53189A2E1E28ECB00078CAF8 /* Tweak.h */,
+				53189A2F1E28ECB00078CAF8 /* Tweak.xmi */,
+				53189A301E28ECB00078CAF8 /* xctheos.h */,
+				53189A341E291E580078CAF8 /* entry.plist */,
+				53189A351E291E580078CAF8 /* Makefile */,
+				53189A361E291E580078CAF8 /* PHPRootListController.h */,
+				53189A371E291E580078CAF8 /* PHPRootListController.m */,
+				53189A3E1E292C700078CAF8 /* PHPAlbumPickerViewController.h */,
+				53189A3F1E292C700078CAF8 /* PHPAlbumPickerViewController.m */,
+				53189A3B1E291F280078CAF8 /* CRPSTableViewCell.h */,
+				53189A3C1E291F280078CAF8 /* CRPSTableViewCell.m */,
+				53189A381E291E580078CAF8 /* Resources */,
+				53189A171E28BB820078CAF8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		53189A171E28BB820078CAF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53189A161E28BB820078CAF8 /* libPhoticon.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53189A151E28BB820078CAF8 /* Photicon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53189A1F1E28BB820078CAF8 /* Build configuration list for PBXNativeTarget "Photicon" */;
+			buildPhases = (
+				53189A121E28BB820078CAF8 /* Sources */,
+				53189A131E28BB820078CAF8 /* Frameworks */,
+				53189A141E28BB820078CAF8 /* CopyFiles */,
+				53189A2B1E28E4050078CAF8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Photicon;
+			productName = Photicon;
+			productReference = 53189A161E28BB820078CAF8 /* libPhoticon.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53189A0E1E28BB810078CAF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = c0ldra1n;
+				TargetAttributes = {
+					53189A151E28BB820078CAF8 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = L53UBUP7SC;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 53189A111E28BB810078CAF8 /* Build configuration list for PBXProject "Photicon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 53189A0D1E28BB810078CAF8;
+			productRefGroup = 53189A171E28BB820078CAF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53189A151E28BB820078CAF8 /* Photicon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53189A2B1E28E4050078CAF8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile;\nmake package install";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53189A121E28BB820078CAF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53189A391E291E580078CAF8 /* Makefile in Sources */,
+				53189A311E28ECB00078CAF8 /* Makefile in Sources */,
+				53189A3A1E291E580078CAF8 /* PHPRootListController.m in Sources */,
+				53189A401E292C700078CAF8 /* PHPAlbumPickerViewController.m in Sources */,
+				53189A321E28ECB50078CAF8 /* Tweak.xmi in Sources */,
+				53189A3D1E291F280078CAF8 /* CRPSTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		53189A1D1E28BB820078CAF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		53189A1E1E28BB820078CAF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		53189A201E28BB820078CAF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEVELOPMENT_TEAM = L53UBUP7SC;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = /opt/theos/include;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		53189A211E28BB820078CAF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEVELOPMENT_TEAM = L53UBUP7SC;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = /opt/theos/include;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53189A111E28BB810078CAF8 /* Build configuration list for PBXProject "Photicon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53189A1D1E28BB820078CAF8 /* Debug */,
+				53189A1E1E28BB820078CAF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53189A1F1E28BB820078CAF8 /* Build configuration list for PBXNativeTarget "Photicon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53189A201E28BB820078CAF8 /* Debug */,
+				53189A211E28BB820078CAF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53189A0E1E28BB810078CAF8 /* Project object */;
+}
